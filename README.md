@@ -4,7 +4,7 @@ Kodas nuskaito studento duomenis (vardas, pavardė, pažymiai) ir išsaugomi į 
 
 ### v0.1_vektoriai
 
-## kode galima rasti:
+### kode galima rasti:
 1. studento/-ų duomenų struktūrą.
 2. "main" funkciją:
   2.1. paklausiama, ar yra iš anksto žinomas duomenų kiekis, kurį reikės įrašyti (atsakymas nuskaitomas su "nuskaityti_atsakyma" funkcija). Yra tik du pasirinkimai - "taip" arba "ne", netinkamos įvesties metu prašoma pakartoti iki tol, kol bus teisinga.
@@ -26,7 +26,7 @@ Kodas nuskaito studento duomenis (vardas, pavardė, pažymiai) ir išsaugomi į 
     2.1.3.2. prašoma įvesti egzamino rezultatą 10-balėje sistemoje (netinkamos įvesties metu prašoma pakartoti iki tol, kol bus teisinga).
     2.1.3.3. įvesti studento duomenys yra pridedami į vektorių, kuriame jie turi būti išsaugomi (pagal užduoties nurodymus).
   
-#  abiejų ciklų pabaigoje atliekami tie patys veiksmai:
+###  abiejų ciklų pabaigoje atliekami tie patys veiksmai:
   2.1.1. panaudojama "med_vid" funkcija, kuri paklausia, ar vartotojas studento rezultatą nori gauti apskaičiuotą vidurkiu arba medianą ("vid" arba "med", netinkamos įvesties metu prašoma pakartoti iki tol, kol bus teisinga). Po rezultato pasirinkimo apskaičiuojama arba mediana arba vidurkis.
   2.1.2. "rezultatu_spausdinimas" funkcija išspausdina studento/-ų vardą, pavardę ir pasirinktos formos rezultatą (vidurkis arba mediana).
 3. "nuskaityti_atsakyma" funkcija (nuskaito "taip" arba "ne" įvestis).
