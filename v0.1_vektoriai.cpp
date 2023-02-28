@@ -122,6 +122,10 @@ int main()
 
             while (cin >> pazymys && pazymys >= 0 && pazymys <= 10)
                 studentas.pazymiai.push_back(pazymys);
+            
+            // jeigu iskarto (nespejus ivesti nei vieno pazymio) ivedama netinkama reiksme - pazymys virsta 0
+            if (studentas.pazymiai.size() == 0)
+                studentas.pazymiai.push_back(pazymys);
 
             // kai ivedama netinkama reiksme (norima nutraukti pazymiu ivedima)
             if (cin.fail())
