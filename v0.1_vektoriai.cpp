@@ -53,6 +53,7 @@ void med_vid(int n, int nd, vector<Studentas> &studentai, string &vidurkis_media
             for (int j = 0; j < nd; j++)
                 vid += studentai[i].pazymiai[j];
             studentai[i].rezultatas = 0.4 * (vid / nd) + 0.6 * studentai[i].egz;
+            vid = 0;
         }
     }
     else
@@ -69,6 +70,7 @@ void med_vid(int n, int nd, vector<Studentas> &studentai, string &vidurkis_media
                 vid = studentai[i].pazymiai[pazymiu_skaicius / 2];
 
             studentai[i].rezultatas = 0.4 * (vid / nd) + 0.6 * studentai[i].egz;
+            vid = 0;
         }
     }
 }
