@@ -28,3 +28,4 @@ using std::streamsize;
 using std::string;
 using std::stringstream;
 using std::vector;
+using std::invalid_argument;
