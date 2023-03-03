@@ -1,4 +1,5 @@
 #include "Mylib.h"
+using namespace std::chrono;
 
 struct Studentas
 {
@@ -72,27 +73,45 @@ bool pagal_pavarde(Studentas a, Studentas b)
 
 void rezultatu_spausdinimas(string vidurkis_mediana, vector<Studentas> &studentai, int n)
 {
-    cout << left << setw(20) << "Vardas"
-         << left << setw(20) << "Pavarde";
+    ofstream fr("rezultatai.txt");
+    fr << left << setw(20) << "Vardas"
+       << left << setw(20) << "Pavarde";
     if (vidurkis_mediana == "vid")
-        cout << left << setw(15) << "Galutinis (Vid.)" << endl;
-
+        fr << left << setw(15) << "Galutinis (Vid.)" << endl;
     else
-        cout << left << setw(15) << "Galutinis (Med.)" << endl;
+        fr << left << setw(15) << "Galutinis (Med.)" << endl;
 
-    cout << "-----------------------------------------------" << endl;
+    fr << "-----------------------------------------------" << endl;
 
     for (int i = 0; i < studentai.size(); i++)
     {
-        cout << left << setw(20) << studentai[i].vardas
-             << left << setw(20) << studentai[i].pavarde
-             << left << setw(15) << fixed << setprecision(2) << studentai[i].rezultatas << endl;
+        fr << left << setw(20) << studentai[i].vardas
+           << left << setw(20) << studentai[i].pavarde
+           << left << setw(15) << fixed << setprecision(2) << studentai[i].rezultatas << endl;
     }
+    fr.close();
 }
 
 int main()
 {
-    ifstream fd("studentai.txt");
+
+    string filename;
+    ifstream file;
+
+    cout << "Įveskite failo pavadinimą: ";
+    cin >> filename;
+
+    file.open(filename);
+
+    // tikrinama, ar failas sėkmingai atidarytas
+    while (!file.is_open())
+    {
+        cout << "Nepavyko atidaryti failo. Pabandykite įvesti kitą pavadinimą: ";
+        cin >> filename;
+        file.open(filename);
+    }
+
+    ifstream fd(filename);
 
     Studentas studentas;
     vector<Studentas> studentai;
@@ -111,6 +130,7 @@ int main()
 
     int studentu_sk = 0;
     string studento_eilute;
+
     // nuskaitomi studentu vardai, pavardes ir pazymiai
     while (getline(fd, studento_eilute))
     {
@@ -119,6 +139,7 @@ int main()
         stringstream ss(studento_eilute);
         ss >> studentas.vardas >> studentas.pavarde;
 
+        // pazymiai isrenkami is failo
         int pazymys = 0;
         for (int i = 0; i < nd_sk; i++)
         {
@@ -132,19 +153,13 @@ int main()
         studentu_sk++;
     }
 
-    // cout << "Studentu skaicius: " << studentu_sk << endl;
-    // for (int i = 0; i < studentu_sk; i++)
-    // {
-    //     cout << studentai[i].vardas << " " << studentai[i].pavarde;
-    //     cout << endl
-    //          << "Egzamino pazymys: " << studentai[i].egz << endl;
-    // }
-
     string vidurkis_mediana;
     med_vid(studentu_sk, nd_sk, studentai, vidurkis_mediana);
 
     cout << "Surusiuoti studentus pagal varda ar pagal pavarde abeceles didejimo tvarka? ('vard' arba 'pavard'): ";
     string atsakymas;
+
+    // netinkamos ivesties metu vykdomas ciklas
     while (atsakymas != "vard" && atsakymas != "pavard")
         cin >> atsakymas;
 
@@ -153,7 +168,14 @@ int main()
     else
         sort(studentai.begin(), studentai.end(), pagal_pavarde);
 
+    auto start = high_resolution_clock::now(); // Paleisti
+
     rezultatu_spausdinimas(vidurkis_mediana, studentai, studentu_sk);
+
+    auto end = high_resolution_clock::now(); // Stabdyti
+    duration<double> diff = end - start;     // Skirtumas (s)
+    cout << "duomenu isspausdinimas uztruko : " << diff.count() << " s" << endl;
+    cout << "duomenu isspausdinimas uztruko : " << duration_cast<milliseconds>(end - start).count() << " msec " << endl;
 
     fd.close();
     return 0;
