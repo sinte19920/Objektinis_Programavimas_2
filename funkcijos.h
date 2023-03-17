@@ -9,9 +9,10 @@ struct Studentas
     double rezultatas;
 };
 
-void duomenu_nuskaitymas(vector<Studentas> &);
 string generate_name(int);
 string generate_surname(int);
 int generate_grade();
 string read_average_type();
+bool compare(Studentas, Studentas);
 void med_vid(int, int, vector<Studentas> &, string &);
+void duomenu_nuskaitymas(vector<Studentas> &);
