@@ -1,6 +1,6 @@
 #include "funkcijos.h"
 
-// Funkcija, kuri sugeneruoja atsitiktinį studento vardą ir pavardę
+// sugeneruoja atsitiktini studento varda ir pavarde
 string generate_name(int i)
 {
     return "Vardas" + to_string(i);
@@ -10,7 +10,7 @@ string generate_surname(int i)
     return " Pavarde" + to_string(i);
 }
 
-// Funkcija, kuri sugeneruoja atsitiktinį studento pažymį (nuo 0 iki 10)
+// sugeneruoja atsitiktini studento pažymi (nuo 0 iki 10)
 int generate_grade()
 {
     return rand() % 11;
@@ -24,7 +24,7 @@ string read_average_type()
     cout << "Norite, kad galutiniame rezultate butu pateiktas rezultatu vidurkis ar mediana?" << endl
          << "(irasykite 'med' - medianai, 'vid' - vidurkiui): ";
 
-    // nuskaitome vartotojo pasirinkimą, kol jis įves tinkamą reikšmę
+    // nuskaitome vartotojo pasirinkima, kol jis ives tinkama reiksme
     while (vidurkis_mediana != "med" && vidurkis_mediana != "vid")
         cin >> vidurkis_mediana;
 
@@ -120,7 +120,7 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
         string filename = "studentai" + to_string(n) + ".txt";
         failu_pav[i] = filename;
 
-        auto start = std::chrono::high_resolution_clock::now(); // Paleisti
+        auto start = std::chrono::high_resolution_clock::now(); // paleisti
 
         ofstream outfile(filename);
 
@@ -141,20 +141,20 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
             outfile << left << setw(18) << vardas;
             outfile << left << setw(18) << pavarde;
 
-            // atsitiktiniai pažymiai
+            // atsitiktiniai pazymiai
             for (int k = 0; k < nd_sk; k++)
             {
                 int grade = generate_grade();
                 outfile << left << setw(5) << grade;
             }
 
-            // egzamino pažymys
+            // egzamino pazymys
             int exam_grade = generate_grade();
             outfile << left << setw(5) << exam_grade << endl;
         }
         outfile.close();
-        auto end = std::chrono::high_resolution_clock::now(); // Stabdyti
-        std::chrono::duration<double> skirt = end - start;    // Skirtumas (s)
+        auto end = std::chrono::high_resolution_clock::now(); // stabdyti
+        std::chrono::duration<double> skirt = end - start;    // skirtumas (s)
         cout << "Failo " << filename << " kurimo sparta: " << fixed << setprecision(2) << skirt.count() << "s" << endl;
 
         auto start1 = std::chrono::high_resolution_clock::now(); // Paleisti
@@ -181,19 +181,19 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
             studentai.push_back(studentas);
         }
 
-        auto end1 = std::chrono::high_resolution_clock::now(); // Stabdyti
-        std::chrono::duration<double> skirt1 = end1 - start1;  // Skirtumas (s)
+        auto end1 = std::chrono::high_resolution_clock::now(); // stabdyti
+        std::chrono::duration<double> skirt1 = end1 - start1;  // skirtumas (s)
         cout << "Duomenu is failo " << failu_pav[i] << " skaitymo sparta: " << fixed << setprecision(2) << skirt1.count() << "s" << endl;
 
         int studentu_sk = studentai.size();
 
-        auto start2 = std::chrono::high_resolution_clock::now(); // Paleisti
+        auto start2 = std::chrono::high_resolution_clock::now(); // paleisti
 
         med_vid(studentu_sk, nd_sk, studentai, vidurkis_mediana, neislaike, islaike);
         studentai.clear();
 
-        auto end2 = std::chrono::high_resolution_clock::now(); // Stabdyti
-        std::chrono::duration<double> skirt2 = end2 - start2;  // Skirtumas (s)
+        auto end2 = std::chrono::high_resolution_clock::now(); // stabdyti
+        std::chrono::duration<double> skirt2 = end2 - start2;  // skirtumas (s)
         cout << "Studentu rusiavimo i dvi grupes sparta: " << fixed << setprecision(2) << skirt2.count() << "s" << endl;
 
         string filename1 = "islaike" + to_string(n) + ".txt";
@@ -202,8 +202,8 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
         ofstream fr(filename1);
         ofstream fr1(filename2);
 
-        auto start3 = std::chrono::high_resolution_clock::now(); // Paleisti
-        // Rašomi studentų duomenys į failą
+        auto start3 = std::chrono::high_resolution_clock::now(); // paleisti
+        // rasomi studentu duomenys i faila
         fr << left << setw(18) << "Vardas"
            << left << setw(18) << "Pavarde";
         if (vidurkis_mediana == "vid")
@@ -217,17 +217,17 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
             fr << left << setw(18) << islaike[j].vardas;
             fr << left << setw(18) << islaike[j].pavarde;
 
-            // Rašomas galutinis pažymį į failą
+            // rasomas galutinis pazymys i faila
             double average_grade = islaike[j].rezultatas;
             fr << left << setw(15) << fixed << setprecision(2) << average_grade << endl;
         }
 
-        auto end3 = std::chrono::high_resolution_clock::now(); // Stabdyti
-        std::chrono::duration<double> skirt3 = end3 - start3;  // Skirtumas (s)
+        auto end3 = std::chrono::high_resolution_clock::now(); // stabdyti
+        std::chrono::duration<double> skirt3 = end3 - start3;  // skirtumas (s)
         cout << "Islaikiusiu studentu spausdinimo sparta: " << fixed << setprecision(2) << skirt3.count() << "s" << endl;
 
         auto start4 = std::chrono::high_resolution_clock::now(); // Paleisti
-        // Rašomi studentų duomenis į failą
+        // rasomi studentu duomenys i faila
         fr1 << left << setw(18) << "Vardas"
             << left << setw(18) << "Pavarde";
         if (vidurkis_mediana == "vid")
@@ -241,7 +241,7 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
             fr1 << left << setw(18) << neislaike[j].vardas;
             fr1 << left << setw(18) << neislaike[j].pavarde;
 
-            // Rašome galutini pažymį į failą
+            // rasome galutini pazymi i faila
             double average_grade = neislaike[j].rezultatas;
             fr1 << left << setw(15) << fixed << setprecision(2) << average_grade << endl;
         }
