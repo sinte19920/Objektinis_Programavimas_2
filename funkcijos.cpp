@@ -1,5 +1,89 @@
 #include "funkcijos.h"
 
+// Funkcija, kuri sugeneruoja atsitiktinį studento vardą ir pavardę
+string generate_name(int i)
+{
+    return "Vardas" + to_string(i);
+}
+string generate_surname(int i)
+{
+    return " Pavarde" + to_string(i);
+}
+
+// Funkcija, kuri sugeneruoja atsitiktinį studento pažymį (nuo 0 iki 10)
+int generate_grade()
+{
+    return rand() % 11;
+}
+
+// funkcija, skirta vidurkio arba medianos pasirinkimo nuskaitymui
+string read_average_type()
+{
+    string vidurkis_mediana;
+
+    cout << "Norite, kad galutiniame rezultate butu pateiktas rezultatu vidurkis ar mediana?" << endl
+         << "(irasykite 'med' - medianai, 'vid' - vidurkiui): ";
+
+    // nuskaitome vartotojo pasirinkimą, kol jis įves tinkamą reikšmę
+    while (vidurkis_mediana != "med" && vidurkis_mediana != "vid")
+        cin >> vidurkis_mediana;
+
+    return vidurkis_mediana;
+}
+
+bool compare(Studentas a, Studentas b)
+{
+    return(a.rezultatas < b.rezultatas);
+}
+
+// funkcija, apskaiciuojanti mediana arba vidurki
+void med_vid(int n, int nd, vector<Studentas> &studentai, string &vidurkis_mediana, vector<Studentas> &neislaike, vector<Studentas> &islaike)
+{
+    double vid = 0;
+    if (vidurkis_mediana == "vid")
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < nd; j++)
+                vid += studentai[i].pazymiai[j];
+            studentai[i].rezultatas = 0.4 * (vid / nd) + 0.6 * studentai[i].egz;
+
+            if (studentai[i].rezultatas < 5)
+                neislaike.push_back(studentai[i]);
+            else
+                islaike.push_back(studentai[i]);
+
+            vid = 0;
+        }
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+        {
+            int pazymiu_skaicius = nd;
+            // isrikiuojama nuo maziausio iki didziausio
+            sort(studentai[i].pazymiai.begin(), studentai[i].pazymiai.end());
+
+            if (pazymiu_skaicius % 2 == 0)
+                vid = (studentai[i].pazymiai[pazymiu_skaicius / 2 - 1] + studentai[i].pazymiai[pazymiu_skaicius / 2]) / 2;
+            else
+                vid = studentai[i].pazymiai[pazymiu_skaicius / 2];
+
+            studentai[i].rezultatas = 0.4 * (vid / nd) + 0.6 * studentai[i].egz;
+
+            if (studentai[i].rezultatas < 5)
+                neislaike.push_back(studentai[i]);
+            else
+                islaike.push_back(studentai[i]);
+
+            vid = 0;
+        }
+    }
+    // surikiuojami studentai pagal rezultata
+    sort(neislaike.begin(), neislaike.end(), compare);
+    sort(islaike.begin(), islaike.end(), compare);
+}
+
 void duomenu_nuskaitymas(vector<Studentas> &studentai)
 {
     srand(time(NULL));
@@ -168,91 +252,5 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
         fd.close();
         fr.close();
         fr1.close();
-    }
-}
-
-// Funkcija, kuri sugeneruoja atsitiktinį studento vardą ir pavardę
-string generate_name(int i)
-{
-    return "Vardas" + to_string(i);
-}
-string generate_surname(int i)
-{
-    return " Pavarde" + to_string(i);
-}
-
-// Funkcija, kuri sugeneruoja atsitiktinį studento pažymį (nuo 0 iki 10)
-int generate_grade()
-{
-    return rand() % 11;
-}
-
-// funkcija, skirta vidurkio arba medianos pasirinkimo nuskaitymui
-string read_average_type()
-{
-    string vidurkis_mediana;
-
-    cout << "Norite, kad galutiniame rezultate butu pateiktas rezultatu vidurkis ar mediana?" << endl
-         << "(irasykite 'med' - medianai, 'vid' - vidurkiui): ";
-
-    do
-    {
-        try
-        {
-            cin >> vidurkis_mediana;
-            if (vidurkis_mediana != "med" && vidurkis_mediana != "vid")
-            {
-                throw invalid_argument("Klaida: ivestas neteisingas simbolis.");
-            }
-            else
-            {
-                break;
-            }
-        }
-        catch (const invalid_argument &e)
-        {
-            cout << e.what() << endl;
-            cin.clear();
-            cin.ignore();
-        }
-    } while (true);
-
-    // nuskaitome vartotojo pasirinkimą, kol jis įves tinkamą reikšmę
-    // while (vidurkis_mediana != "med" && vidurkis_mediana != "vid")
-
-    return vidurkis_mediana;
-}
-
-// funkcija, apskaiciuojanti mediana arba vidurki
-void med_vid(int n, int nd, vector<Studentas> &studentai, string &vidurkis_mediana, vector<Studentas> &neislaike, vector<Studentas> &islaike)
-{
-    vidurkis_mediana = read_average_type();
-    double vid = 0;
-    if (vidurkis_mediana == "vid")
-    {
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < nd; j++)
-                vid += studentai[i].pazymiai[j];
-            studentai[i].rezultatas = 0.4 * (vid / nd) + 0.6 * studentai[i].egz;
-            vid = 0;
-        }
-    }
-    else
-    {
-        for (int i = 0; i < n; i++)
-        {
-            int pazymiu_skaicius = nd;
-            // isrikiuojama nuo maziausio iki didziausio
-            sort(studentai[i].pazymiai.begin(), studentai[i].pazymiai.end());
-
-            if (pazymiu_skaicius % 2 == 0)
-                vid = (studentai[i].pazymiai[pazymiu_skaicius / 2 - 1] + studentai[i].pazymiai[pazymiu_skaicius / 2]) / 2;
-            else
-                vid = studentai[i].pazymiai[pazymiu_skaicius / 2];
-
-            studentai[i].rezultatas = 0.4 * (vid / nd) + 0.6 * studentai[i].egz;
-            vid = 0;
-        }
     }
 }
