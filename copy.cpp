@@ -1,3 +1,9 @@
+bool compare(Studentas a, Studentas b)
+{
+    return a.rezultatas < b.rezultatas;
+}
+
+
 void med_vid(int n, int nd, vector<Studentas> &studentai, string &vidurkis_mediana, vector<Studentas> &neislaike, vector<Studentas> &islaike)
 {
     double vid = 0;
