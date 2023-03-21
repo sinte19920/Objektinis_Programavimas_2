@@ -67,6 +67,11 @@ void duomenu_nuskaitymas(vector<Studentas> &studentai)
     // netinkamos ivesties metu vykdomas ciklas
     while (atsakymas != "vard" && atsakymas != "pavard")
         cin >> atsakymas;
+    
+    if (atsakymas == "vard")
+        sort(studentai.begin(), studentai.end(), pagal_varda);
+    else
+        sort(studentai.begin(), studentai.end(), pagal_pavarde);
 
     rezultatu_spausdinimas(vidurkis_mediana, studentai);
 
