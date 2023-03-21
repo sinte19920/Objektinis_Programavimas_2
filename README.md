@@ -1,4 +1,4 @@
-# Objektinis_Programavimas
+# v.04
 
 ## v.04 yra patobulinta v.03 versija. 
 Papildomai pridėtas failų generatorius, kuris sugeneruoja studentų failus su jų pažymiais, po to šie sugeneruoti failai panaudojami tolesnės uždoties atlikimui. 
