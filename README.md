@@ -2,6 +2,30 @@
 
 Nuo šios versijos yra pradedama naudoti makefile. Didžiausi pakeitimai (lyginant su v.05), kad yra 2 strategijos: pirma, kurioje studentai yra išskirstomi į du skirtingus vektorius ("islaike" ir "neislaike"), nors toks rūšiavimo būdas buvo naudojamas nuo ankstesnių versijų, o antra, kurioje studentai, gavę galutinį pažymį 5 ir daugiau yra paliekami "studentai" vektoriuje, o likę pašalinami (dirbama su tuo pačiu vektorium). Yra kiekvieną kartą paklausiama, kurią strategija vartotojas nori panaudoti.
 
+### Vykdymas su makefile (Windows)
+
+- [Įsidiegti MinGW](https://sourceforge.net/projects/mingw/)
+- Įtraukti MinGW/bin katalogą į **path**
+```bash
+    SETX PATH "MinGW/bin katalogo adresas"
+```
+- Įsidiegti mingw32-make
+```bash
+    mingw-get install mingw32-make
+```
+- Paleisti programa naudojant makefile
+```bash
+    mingw32-make vector
+```
+arba
+```bash
+    mingw32-make list
+```
+arba
+```bash
+    mingw32-make deque
+```
+
 ### Studentų rūšiavimo į grupes sparta:
 
 **Pirma strategija**
