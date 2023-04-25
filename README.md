@@ -1,8 +1,12 @@
 # Objektinis_Programavimas
 
 ## v.05 yra patobulinta v.04 versija. 
-Nebuvo daug kas pakeista, tik pasitelkiama 'vector', 'deque' ir 'list' pagalba, norint patikrinti programos veikimo spartą. Paleidus programą, reikia pasirinkti, su kurio iš 3 konteinerių norima dirbti.
+Nebuvo daug kas pakeista, tik pasitelkiama 'vector', 'deque' ir 'list' pagalba, norint patikrinti programos veikimo spartą. Leidžiant programą su komandine eilute reikia pasirinkti, su kurio iš 3 konteinerių norima dirbti.
 
+**Programos paleidimui reikalingos komandinės eilutės:**
+• g++ -o programa main.cpp funkcijos.cpp funkcijos.h
+• g++ -o programa main_list.cpp funkcijos.cpp funkcijos.h
+• g++ -o programa main_deque.cpp funkcijos.cpp funkcijos.h
 
 ## Programos sparta:
 
@@ -65,3 +69,9 @@ Nebuvo daug kas pakeista, tik pasitelkiama 'vector', 'deque' ir 'list' pagalba, 
 |  100 000         |  2.17s        |  1.46s        |  3.32s       |  0.45s            |  1.35s            |
 |  1 000 000       |  19.77s       |  15.65s       |  35.62s      |  4.53s            |  13.06s           |
 |  10 000 000      |  205.30s      |  205.73s      |  253.95s     |  215.26s          |  199.30s          |
+
+## Sistemos parametrai:
+
+ **Procesorius** Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz
+ **RAM** 4,0 GB DDR3 Single-Channel 800MHz
+ **SSD** HP SSD S700 500GB
