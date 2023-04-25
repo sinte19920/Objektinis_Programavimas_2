@@ -1,5 +1,7 @@
 # V1.0
 
+Nuo šios versijos yra pradedama naudoti makefile. Didžiausi pakeitimai (lyginant su v.05), kad yra 2 strategijos: pirma, kurioje studentai yra išskirstomi į du skirtingus vektorius ("islaike" ir "neislaike"), nors toks rūšiavimo būdas buvo naudojamas nuo ankstesnių versijų, o antra, kurioje studentai, gavę galutinį pažymį 5 ir daugiau yra paliekami "studentai" vektoriuje, o likę pašalinami (dirbama su tuo pačiu vektorium). Yra kiekvieną kartą paklausiama, kurią strategija vartotojas nori panaudoti.
+
 ### Studentų rūšiavimo į grupes sparta:
 
 **Pirma strategija**
