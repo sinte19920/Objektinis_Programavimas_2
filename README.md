@@ -4,9 +4,9 @@
 Nebuvo daug kas pakeista, tik pasitelkiama 'vector', 'deque' ir 'list' pagalba, norint patikrinti programos veikimo spartą. Leidžiant programą su komandine eilute reikia pasirinkti, su kurio iš 3 konteinerių norima dirbti.
 
 **Programos paleidimui reikalingos komandinės eilutės:**
-• g++ -o programa main.cpp funkcijos.cpp funkcijos.h
-• g++ -o programa main_list.cpp funkcijos.cpp funkcijos.h
-• g++ -o programa main_deque.cpp funkcijos.cpp funkcijos.h
+- g++ -o programa main.cpp funkcijos.cpp funkcijos.h
+- g++ -o programa main_list.cpp funkcijos.cpp funkcijos.h
+- g++ -o programa main_deque.cpp funkcijos.cpp funkcijos.h
 
 ## Programos sparta:
 
