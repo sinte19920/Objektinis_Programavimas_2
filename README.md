@@ -19,3 +19,6 @@ Nuo šios versijos yra pradedama naudoti makefile. Didžiausi pakeitimai (lygina
 |    10 000        |  0.102s       |   0.102s      |   0.116s      |
 |    100 000       |  1.260s       |   1.048s      |   1.429s      |
 |    1 000 000     |  15.825s      |   11.257s     |   16.815s     |
+
+## v.05 yra patobulinta v.04 versija. 
+Nebuvo daug kas pakeista, tik pasitelkiama 'vector', 'deque' ir 'list' pagalba, norint patikrinti programos veikimo spartą. Leidžiant programą su komandine eilute reikia pasirinkti, su kurio iš 3 konteinerių norima dirbti.
