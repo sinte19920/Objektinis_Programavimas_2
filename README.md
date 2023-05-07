@@ -1,3 +1,3 @@
 # v1.2
 
-Nuo šios versijos yra pritaikyta "rule of five" klasei "Studentas", aprašytoje funkcijos.h faile.
+Nuo šios versijos yra pritaikyta "rule of five" "Studentas" klasei, aprašytoje funkcijos.h faile.
