@@ -1,3 +1,3 @@
-# v1.2
+# v1.5
 
-Nuo šios versijos yra pritaikyta "rule of five" "Studentas" klasei, aprašytoje funkcijos.h faile.
+Šioje versijoje įvesta nauja klasė class Zmogus, kuri yra abstrakti bazinė klasė klasei class Studentas. Šioje naujoje klasėje deklaruojama grynoji virtuali funkcija raso(), o v1.2 versioje buvę atributai string vardas ir string pavarde yra taip pat perkelti į šią naująją klasę.
