@@ -44,11 +44,11 @@ public:
     }
 
     // Setteriai
-    void set_vardas(string v) { this->vardas = vardas; }
-    void set_pavarde(string p) { this->pavarde = pavarde; }
-    void set_egz(int e) { this->egz = egz; }
+    void set_vardas(string vardas) { this->vardas = vardas; }
+    void set_pavarde(string pavarde) { this->pavarde = pavarde; }
+    void set_egz(int egz) { this->egz = egz; }
     void set_pazymiai(const vector<double> &paz) { this->pazymiai = pazymiai; }
-    void set_rezultatas(double rez) { this->rezultatas = rezultatas; }
+    void set_rezultatas(double rezultatas) { this->rezultatas = rezultatas; }
 
     // Getteriai
     string get_vardas() const { return vardas; }
