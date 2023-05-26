@@ -1,6 +1,6 @@
 # v1.1
 
-Nuo šios versijos jau pradėta naudoti klasė "Studentas". 
+Nuo šios versijos jau pradėta naudoti klasė "Studentas". Programos realizavimui yra pasitelkta kelių flags pagalba: -O1, -O2 ir -O3.
 
 ## Programos sparta, naudojant skiringus flags (studentas gauna po 3 pažymius):
 
