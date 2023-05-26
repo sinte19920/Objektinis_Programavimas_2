@@ -1,0 +1,4 @@
+vector:
+	g++ -o programa main.cpp funkcijos.cpp funkcijos.h && ./programa
+clean:
+	rm *.txt *.exe
