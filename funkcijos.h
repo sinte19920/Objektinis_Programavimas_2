@@ -58,9 +58,9 @@ public:
     }
 
     // Setteriai
-    void set_egz(int e) { this->egz = egz; }
-    void set_pazymiai(const vector<double> &paz) { this->pazymiai = pazymiai; }
-    void set_rezultatas(double rez) { this->rezultatas = rezultatas; }
+    void set_egz(int egz) { this->egz = egz; }
+    void set_pazymiai(const vector<double> &pazymiai) { this->pazymiai = pazymiai; }
+    void set_rezultatas(double rezultatas) { this->rezultatas = rezultatas; }
 
     // Getteriai
     double get_egz() const { return egz; }
