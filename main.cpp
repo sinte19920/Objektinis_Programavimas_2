@@ -7,6 +7,8 @@ int main()
 
     vector<Studentas> studentai;
     duomenu_nuskaitymas(studentai);
+    
+    system("pause");
 
     //auto end = std::chrono::high_resolution_clock::now(); // stabdyti
     //std::chrono::duration<double> skirt = end - start;    // skirtumas (s)
