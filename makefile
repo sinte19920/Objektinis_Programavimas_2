@@ -1,8 +1,20 @@
-vector:
-	g++ -o programa main.cpp funkcijos.cpp funkcijos.h && ./programa
-list:
-	g++ -o programa main_list.cpp funkcijos.cpp funkcijos.h && ./programa
-deque:
-	g++ -o programa main_deque.cpp funkcijos.cpp funkcijos.h && ./programa
+CXX = g++
+CXXFLAGS = -std=c++17 -O1
+
+SRCS = main.cpp funkcijos.cpp
+OBJS = $(SRCS:.cpp=.o)
+
+.PHONY: all clean
+
+all: main
+
+main: $(OBJS)
+	$(CXX) -o $@ $(OBJS) $(CXXFLAGS)
+
+%.o: %.cpp
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
+
 clean:
-	rm *.txt *.exe
+	rm -f $(OBJS) main
+
+.DEFAULT_GOAL := all
